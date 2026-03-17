@@ -1,28 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class VideoMeetScreen extends StatefulWidget {
+class VideoMeetScreen extends StatelessWidget {
   const VideoMeetScreen({super.key});
 
-  @override
-  State<VideoMeetScreen> createState() => _VideoMeetScreenState();
-}
+  Future<void> _openMeeting(BuildContext context) async {
+    final Uri meetingUrl = Uri.parse(
+      'https://meet.jit.si/sanduni_portfolio_meeting',
+    );
 
-class _VideoMeetScreenState extends State<VideoMeetScreen> {
-  late final WebViewController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _controller = WebViewController()
-      ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..setBackgroundColor(Colors.white)
-      ..loadRequest(
-        Uri.parse(
-          'https://meet.jit.si/sanduni_portfolio_meeting#config.prejoinPageEnabled=false',
+    if (!await launchUrl(
+      meetingUrl,
+      mode: LaunchMode.externalApplication,
+    )) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Could not open video meeting'),
         ),
       );
+    }
   }
 
   @override
@@ -31,8 +27,12 @@ class _VideoMeetScreenState extends State<VideoMeetScreen> {
       appBar: AppBar(
         title: const Text("Live Video Meet"),
       ),
-      body: WebViewWidget(
-        controller: _controller,
+      body: Center(
+        child: ElevatedButton.icon(
+          onPressed: () => _openMeeting(context),
+          icon: const Icon(Icons.video_call),
+          label: const Text("Open Meeting"),
+        ),
       ),
     );
   }

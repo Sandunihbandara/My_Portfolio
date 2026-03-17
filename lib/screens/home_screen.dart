@@ -70,12 +70,12 @@ class _HomeScreenState extends State<HomeScreen>
     /// Name color animation
     _nameGlowController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1600),
+      duration: const Duration(milliseconds: 16000000),
     )..repeat(reverse: true);
 
     _nameColorAnimation = ColorTween(
-      begin: Colors.black87,
-      end: Colors.black26,
+      begin: Colors.black,
+      end: Colors.black,
     ).animate(
       CurvedAnimation(
         parent: _nameGlowController,
@@ -119,8 +119,8 @@ class _HomeScreenState extends State<HomeScreen>
             /// PROFILE CARD
             Container(
               width: 920,
-              height: 630,
-              padding: const EdgeInsets.all(10),
+              height: 500,
+              padding: const EdgeInsets.all(1),
               decoration: BoxDecoration(
                 color: Colors.white,
                 boxShadow: [
@@ -133,7 +133,7 @@ class _HomeScreenState extends State<HomeScreen>
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 100),
+                  const SizedBox(height: 70),
 
                   /// NAME
                   FadeTransition(
@@ -164,14 +164,14 @@ class _HomeScreenState extends State<HomeScreen>
                               return Text(
                                 "  Sanduni Bandara",
                                 style: TextStyle(
-                                  fontSize: 42,
+                                  fontSize: 32,
                                   fontFamily: 'Nunito',
                                   fontWeight: FontWeight.bold,
                                   color: _nameColorAnimation.value,
                                   shadows: [
                                     Shadow(
-                                      color: Colors.black87.withOpacity(0.8),
-                                      blurRadius: 10,
+                                      color: Colors.black.withOpacity(0.8),
+                                      blurRadius: 4,
                                     ),
                                   ],
 
@@ -232,7 +232,7 @@ class _HomeScreenState extends State<HomeScreen>
                                 child: const Icon(
                                   Icons.laptop_mac,
                                   color: Colors.purple,
-                                  size: 28,
+                                  size: 23,
                                 ),
                               ),
 
@@ -241,7 +241,7 @@ class _HomeScreenState extends State<HomeScreen>
                               RichText(
                                 text: const TextSpan(
                                   style: TextStyle(
-                                    fontSize: 30,
+                                    fontSize: 23,
                                     fontWeight: FontWeight.w500,
                                   ),
                                   children: [
@@ -263,7 +263,7 @@ class _HomeScreenState extends State<HomeScreen>
                     ),
                   ),
 
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 20),
 
                   /// IMAGE
                   Expanded(
@@ -287,17 +287,18 @@ class _HomeScreenState extends State<HomeScreen>
             /// HELP BOX
             Container(
               width: 620,
-              height: 200,
+              height: 160,
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(0),
+                borderRadius: BorderRadius.circular(25),
               ),
               child: Column(
                 children: [
+                  const SizedBox(height: 9),
                   const Text(
                     "Can I help you?",
                     style: TextStyle(
-                      fontSize: 30,
+                      fontSize: 24,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -306,7 +307,7 @@ class _HomeScreenState extends State<HomeScreen>
                     "Let's work!",
                     style: TextStyle(
                       color: Colors.blueGrey,
-                      fontSize: 25,
+                      fontSize: 23,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -325,8 +326,8 @@ class _HomeScreenState extends State<HomeScreen>
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.purple.shade700,
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 30,
-                        vertical: 22,
+                        horizontal: 25,
+                        vertical: 20,
                       ),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50),
@@ -356,15 +357,15 @@ class _HomeScreenState extends State<HomeScreen>
                           child: const Icon(
                             Icons.phone_in_talk,
                             color: Colors.white,
-                            size: 30,
+                            size: 25,
                           ),
                         ),
-                        const SizedBox(width: 12),
+                        const SizedBox(width: 10),
                         const Text(
                           "Contact Me",
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 27,
+                            fontSize: 22,
                           ),
                         ),
                       ],
@@ -374,7 +375,7 @@ class _HomeScreenState extends State<HomeScreen>
               ),
             ),
 
-            const SizedBox(height: 25),
+            const SizedBox(height: 40),
 
             /// MENU BUTTONS
             Row(
@@ -422,8 +423,8 @@ class _HomeScreenState extends State<HomeScreen>
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 125,
-        height: 95,
+        width: 105,
+        height: 80,
         decoration: BoxDecoration(
           color: color,
           borderRadius: BorderRadius.circular(15),
@@ -436,7 +437,7 @@ class _HomeScreenState extends State<HomeScreen>
               style: const TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
-              fontSize: 22,
+              fontSize: 20,
             ),
           ),
         const SizedBox(height: 6),
